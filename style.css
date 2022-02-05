@@ -1,0 +1,64 @@
+body
+{
+
+}
+
+
+.heading{
+    width:100%;
+    text-align: left;
+}
+.heading h1{
+    display: inline;
+}
+
+.heading button{
+    float: right;
+     border:1px dotted lightsalmon;
+}
+
+
+.BIIIIG_IMG{
+    width:100%;
+}
+
+
+#start,#status{
+    font-size: 22px;
+}
+
+
+
+h4{
+
+        position:fixed;
+        color:black;
+        bottom:0;
+        width:100%;
+        background-color:gainsboro;
+        text-align:center;
+        line-height:3;
+
+}
+
+
+.instruction_img{
+    display:inline-block;
+    width:45%;
+}
+
+
+
+.modal-dialog{
+width:90%;
+
+}
+
+
+canvas{
+    border:5px dotted lavender;
+    border-radius:10px;
+    margin-top:130px;
+}
+
+
