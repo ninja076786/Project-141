@@ -1,6 +1,6 @@
 
 /*created by joseph tran */
-
+var game_status="";
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 100;
@@ -43,6 +43,9 @@ function o(){
   paddle1Height=paddle1Height-10
 }
 function draw(){
+  if(game_status == "start"){
+    
+  }
   background(0); 
   image(video, 0, 0, 700, 600); 
 
@@ -57,6 +60,12 @@ function draw(){
    //funtion paddleInCanvas call 
    paddleInCanvas();
  
+
+function startGame()
+{
+game_status="start";
+document.getElementById("status").innerHTML="Game is loaded!!"
+}
    //left paddle
    fill(250,0,0);
     stroke(0,0,250);
