@@ -9,7 +9,7 @@ var paddle2Y = 685,paddle2Height = 70;
 var score1 = 0, score2 =0;
 var paddle1Y;
 
-var  playerscore =10;
+var  playerscore =10000000;
 var audio1;
 var pcscore =0;
 //ball x and y and speedx speed y and radius
@@ -20,6 +20,11 @@ var ball = {
     dx:10,
     dy:5
 }
+function preload(){
+  paddel=loadSound("ball_touch_paddel.wav");
+  ohno=loadSound("missed.wav");
+}
+
 
 function setup(){
   var canvas =  createCanvas(700,600);
@@ -44,7 +49,55 @@ function o(){
 }
 function draw(){
   if(game_status == "start"){
-    
+    background(0); 
+    image(video, 0, 0, 700, 600);
+  
+    fill("black");
+    stroke("black");
+    rect(680,0,20,700);
+  
+    fill("black");
+    stroke("black");
+    rect(0,0,20,700);
+  
+    if(scoreRightWrist > 0.2)
+    {
+      fill("red");
+      stroke("red");
+      circle(rightWristX, rightWristY, 30);
+    }
+  
+  
+      //funtion paddleInCanvas call 
+      paddleInCanvas();
+          
+      //left paddle
+      fill(250,0,0);
+      stroke(0,0,250);
+      strokeWeight(0.5);
+      paddle1Y = rightWristY; 
+      rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
+  
+  
+      //pc computer paddle
+      fill("#FFA500");
+      stroke("#FFA500");
+      var paddle2y =ball.y-paddle2Height/2;  rect(paddle2Y,paddle2y,paddle2,paddle2Height,100);
+      
+      //function midline call
+      midline();
+      
+      //funtion drawScore call 
+      drawScore();
+  
+      //function models call  
+      models();
+  
+      //function move call which in very important
+      move();
+  
+      }
+  
   }
   background(0); 
   image(video, 0, 0, 700, 600); 
@@ -91,7 +144,7 @@ document.getElementById("status").innerHTML="Game is loaded!!"
    
    //function move call which in very important
     move();
-}
+
 
 
 
@@ -131,6 +184,7 @@ function drawScore(){
 
 //very important function of this game
 function move(){
+
    fill(50,350,0);
    stroke(255,0,0);
    strokeWeight(0.5);
@@ -142,7 +196,8 @@ function move(){
    }
   if (ball.x-2.5*ball.r/2< 0){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
-    ball.dx = -ball.dx+0.5; 
+    paddel.play();
+    ball.dx = -ball.dx+1; 
   }
   else{
     pcscore++;
@@ -150,7 +205,8 @@ function move(){
     navigator.vibrate(100);
   }
 }
-if(pcscore ==1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000){
+if(pcscore ==3){
+   ohno.play();
     fill("#FFA500");
     stroke(0)
     rect(0,0,width,height-1);
